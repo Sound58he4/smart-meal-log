@@ -1,20 +1,25 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Home, Activity, Calendar, Settings, User, Plus } from "lucide-react";
+import { Home, Activity, Calendar, Settings, User, Plus, BadgeCheck, Dumbbell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useToast } from "@/components/ui/use-toast";
 
 const navItems = [
   { path: "/", label: "Dashboard", icon: Home },
-  { path: "/meals", label: "Meals", icon: Calendar },
+  { path: "/meals", label: "Nutrition", icon: Calendar },
   { path: "/progress", label: "Progress", icon: Activity },
+  { path: "/workouts", label: "Workouts", icon: Dumbbell },
+  { path: "/achievements", label: "Goals", icon: BadgeCheck },
   { path: "/profile", label: "Profile", icon: User },
-  { path: "/settings", label: "Settings", icon: Settings },
 ];
 
 export function Sidebar() {
+  const { toast } = useToast();
+  
   const itemVariants = {
     hidden: { opacity: 0, x: -20 },
     visible: (i: number) => ({ 
@@ -26,19 +31,26 @@ export function Sidebar() {
       }
     })
   };
+  
+  const handleQuickAdd = () => {
+    toast({
+      title: "Quick add feature",
+      description: "This feature will be available soon!",
+    });
+  };
 
   return (
-    <div className="w-64 border-r bg-card p-4 flex flex-col h-screen">
+    <div className="w-64 border-r bg-card/50 backdrop-blur-sm p-4 flex flex-col h-screen">
       <motion.div 
-        className="flex items-center gap-2 py-4 mb-6"
+        className="flex items-center gap-3 py-4 mb-6"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="h-8 w-8 rounded-full bg-gradient-to-r from-fitness-primary to-fitness-secondary flex items-center justify-center">
-          <span className="text-white font-bold">F</span>
+        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-fitness-primary via-fitness-tertiary to-fitness-secondary flex items-center justify-center">
+          <span className="text-white font-bold text-xl">F</span>
         </div>
-        <span className="text-lg font-bold">FitTrack AI</span>
+        <span className="text-xl font-bold tracking-tight">FitPulse</span>
       </motion.div>
 
       <nav className="space-y-1 flex-1">
@@ -54,10 +66,10 @@ export function Sidebar() {
               to={item.path}
               className={({ isActive }) =>
                 cn(
-                  "flex items-center gap-3 px-3 py-2 rounded-md transition-colors",
+                  "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors",
                   isActive
-                    ? "bg-gradient-to-r from-fitness-primary to-fitness-secondary text-white"
-                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    ? "bg-primary text-white font-medium shadow-md shadow-primary/20"
+                    : "text-foreground hover:bg-muted"
                 )
               }
             >
@@ -68,16 +80,55 @@ export function Sidebar() {
         ))}
       </nav>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
-        <Button className="gap-2 mt-6 bg-fitness-tertiary hover:bg-fitness-tertiary/90 w-full">
-          <Plus size={16} />
-          <span>Add Meal</span>
-        </Button>
-      </motion.div>
+      <Sheet>
+        <SheetTrigger asChild>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mt-6"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <Button className="w-full gap-2 bg-gradient-to-r from-fitness-primary to-fitness-tertiary hover:opacity-90">
+              <Plus size={16} />
+              <span>Quick Add</span>
+            </Button>
+          </motion.div>
+        </SheetTrigger>
+        <SheetContent>
+          <div className="space-y-4 pt-8">
+            <h2 className="text-xl font-bold">Quick Add</h2>
+            <p className="text-muted-foreground">Choose what you want to log:</p>
+            
+            <div className="grid gap-4 pt-4">
+              <Button onClick={handleQuickAdd} variant="outline" className="justify-start h-12 text-left">
+                <Calendar size={18} className="mr-2" />
+                <div>
+                  <div className="font-medium">Log Meal</div>
+                  <div className="text-xs text-muted-foreground">Track food & calories</div>
+                </div>
+              </Button>
+              
+              <Button onClick={handleQuickAdd} variant="outline" className="justify-start h-12 text-left">
+                <Dumbbell size={18} className="mr-2" />
+                <div>
+                  <div className="font-medium">Log Workout</div>
+                  <div className="text-xs text-muted-foreground">Track exercise & sets</div>
+                </div>
+              </Button>
+              
+              <Button onClick={handleQuickAdd} variant="outline" className="justify-start h-12 text-left">
+                <Activity size={18} className="mr-2" />
+                <div>
+                  <div className="font-medium">Log Metrics</div>
+                  <div className="text-xs text-muted-foreground">Weight, measurements, etc.</div>
+                </div>
+              </Button>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }

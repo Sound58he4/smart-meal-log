@@ -6,9 +6,11 @@ import { MobileNav } from "./MobileNav";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { motion } from "framer-motion";
+import { useFitness } from "@/context/FitnessContext";
 
 export function AppLayout() {
   const isMobile = useIsMobile();
+  const { userProfile } = useFitness();
 
   // Animation variants
   const mainContentVariants = {
@@ -17,17 +19,23 @@ export function AppLayout() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-background to-background/95 transition-colors duration-300">
       {!isMobile && (
         <div className="flex flex-1">
           <Sidebar />
           <motion.main 
-            className="flex-1 p-4 md:p-6"
+            className="flex-1 p-6 md:p-8 overflow-y-auto max-h-screen"
             initial="hidden"
             animate="visible"
             variants={mainContentVariants}
           >
-            <div className="flex justify-end mb-4">
+            <div className="flex justify-between items-center mb-6">
+              <div>
+                <h2 className="font-bold text-lg">
+                  {userProfile ? `Welcome, ${userProfile.name.split(' ')[0]}` : 'Welcome'}
+                </h2>
+                <p className="text-muted-foreground text-sm">Track your health & fitness journey</p>
+              </div>
               <ThemeSwitcher />
             </div>
             <Outlet />
@@ -37,11 +45,17 @@ export function AppLayout() {
 
       {isMobile && (
         <>
-          <div className="flex justify-end p-4">
+          <div className="flex justify-between items-center p-4 border-b">
+            <div className="flex items-center space-x-2">
+              <div className="h-8 w-8 rounded-full bg-gradient-to-r from-fitness-primary to-fitness-tertiary flex items-center justify-center">
+                <span className="text-white font-bold">F</span>
+              </div>
+              <span className="font-bold">FitPulse</span>
+            </div>
             <ThemeSwitcher />
           </div>
           <motion.main 
-            className="flex-1 p-4 pb-20"
+            className="flex-1 p-4 pb-20 overflow-y-auto"
             initial="hidden"
             animate="visible"
             variants={mainContentVariants}

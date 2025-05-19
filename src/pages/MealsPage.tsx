@@ -7,6 +7,8 @@ import { useFitness } from "@/context/FitnessContext";
 import { MealSummary } from "@/components/dashboard/MealSummary";
 import { QuickAddFood } from "@/components/dashboard/QuickAddFood";
 import { motion } from "framer-motion";
+import { Search, Filter } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 export default function MealsPage() {
   const { currentDate, setCurrentDate } = useFitness();
@@ -45,24 +47,42 @@ export default function MealsPage() {
       initial="hidden"
       animate="visible"
     >
-      <motion.div variants={itemVariants}>
-        <h1 className="text-3xl font-bold">Meals</h1>
+      <motion.div variants={itemVariants} className="mb-6">
+        <h1 className="text-3xl font-bold heading-gradient">Meals & Nutrition</h1>
         <p className="text-muted-foreground">Track and log your food intake</p>
+      </motion.div>
+
+      <motion.div variants={itemVariants} className="relative">
+        <div className="bg-card rounded-lg p-3 flex items-center gap-2 mb-6">
+          <div className="bg-muted rounded-md p-2">
+            <Search size={18} className="text-muted-foreground" />
+          </div>
+          <Input 
+            placeholder="Search foods..." 
+            className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-0" 
+          />
+          <div className="bg-muted rounded-md p-2">
+            <Filter size={18} className="text-muted-foreground" />
+          </div>
+        </div>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <motion.div className="space-y-6" variants={itemVariants}>
-          <Card className="card-hover overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-fitness-primary/10 to-fitness-secondary/10 dark:from-fitness-primary/5 dark:to-fitness-secondary/5">
-              <CardTitle className="text-lg">Select Date</CardTitle>
+          <Card className="overflow-hidden border-none shadow-xl shadow-primary/5">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5 pb-2">
+              <CardTitle className="text-lg flex items-center">
+                <div className="w-2 h-6 bg-secondary rounded-full mr-2"></div>
+                Select Date
+              </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4">
               <Calendar
                 mode="single"
                 selected={date}
                 onSelect={handleDateChange}
                 initialFocus
-                className="rounded-md border"
+                className="rounded-md"
               />
             </CardContent>
           </Card>

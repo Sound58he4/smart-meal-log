@@ -54,10 +54,10 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				fitness: {
-					primary: '#3DD7C3',
-					secondary: '#9b87f5',
-					tertiary: '#4A57EA',
-					light: '#E5DEFF',
+					primary: '#FF5757',
+					secondary: '#58B9FF',
+					tertiary: '#8C52FF',
+					light: '#FFF0F0',
 					dark: '#1A1F2C',
 				}
 			},
@@ -120,6 +120,10 @@ export default {
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' },
+				},
+				'bounce-subtle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' }
 				}
 			},
 			animation: {
@@ -130,6 +134,7 @@ export default {
 				'fade-in-right': 'fade-in-right 0.6s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
 				'float': 'float 3s ease-in-out infinite',
+				'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite',
 			}
 		}
 	},
