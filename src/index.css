@@ -40,7 +40,7 @@
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222.2 84% 8%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222.2 84% 4.9%;
@@ -73,6 +73,28 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply hover:shadow-md transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 dark:bg-black/20 backdrop-blur-sm border border-white/20 dark:border-white/10;
+  }
+
+  .animated-gradient {
+    background: linear-gradient(90deg, #3DD7C3, #9b87f5, #4A57EA, #3DD7C3);
+    background-size: 300% 100%;
+    animation: gradient 8s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
