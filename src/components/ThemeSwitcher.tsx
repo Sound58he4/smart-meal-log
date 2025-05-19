@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { motion } from "framer-motion";
 
 export function ThemeSwitcher() {
   const { setTheme, theme } = useTheme();

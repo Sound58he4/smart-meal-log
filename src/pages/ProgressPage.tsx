@@ -91,7 +91,11 @@ export default function ProgressPage() {
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <motion.div variants={itemVariants}>
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
           <Card className="card-hover overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-fitness-primary/10 to-fitness-secondary/10 dark:from-fitness-primary/5 dark:to-fitness-secondary/5">
               <CardTitle className="text-lg flex items-center">
@@ -105,7 +109,11 @@ export default function ProgressPage() {
           </Card>
         </motion.div>
         
-        <motion.div variants={itemVariants}>
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
           <Card className="card-hover overflow-hidden">
             <CardHeader className="bg-gradient-to-r from-fitness-secondary/10 to-fitness-primary/10 dark:from-fitness-secondary/5 dark:to-fitness-primary/5">
               <CardTitle className="text-lg flex items-center">
@@ -120,7 +128,11 @@ export default function ProgressPage() {
         </motion.div>
       </div>
 
-      <motion.div variants={itemVariants}>
+      <motion.div 
+        variants={itemVariants}
+        whileHover={{ scale: 1.01 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      >
         <Card className="card-hover">
           <CardHeader className="bg-gradient-to-r from-fitness-tertiary/10 to-fitness-primary/10 dark:from-fitness-tertiary/5 dark:to-fitness-primary/5">
             <CardTitle className="text-lg flex items-center">
@@ -130,32 +142,47 @@ export default function ProgressPage() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md">
+              <motion.div 
+                className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
                 <p className="text-sm text-muted-foreground">Daily Average</p>
                 <p className="text-2xl font-bold text-fitness-primary animate-float">2,057</p>
                 <p className="text-xs text-muted-foreground">calories</p>
-              </div>
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md">
+              </motion.div>
+              
+              <motion.div 
+                className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
                 <p className="text-sm text-muted-foreground">Protein Goal</p>
                 <p className="text-2xl font-bold text-blue-500 animate-float">
                   {userProfile?.goals.protein}g
                 </p>
                 <p className="text-xs text-muted-foreground">daily</p>
-              </div>
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md">
+              </motion.div>
+              
+              <motion.div 
+                className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
                 <p className="text-sm text-muted-foreground">Carb Goal</p>
                 <p className="text-2xl font-bold text-amber-500 animate-float">
                   {userProfile?.goals.carbs}g
                 </p>
                 <p className="text-xs text-muted-foreground">daily</p>
-              </div>
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md">
+              </motion.div>
+              
+              <motion.div 
+                className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg transition-all hover:shadow-md"
+                whileHover={{ scale: 1.05 }}
+              >
                 <p className="text-sm text-muted-foreground">Fat Goal</p>
                 <p className="text-2xl font-bold text-red-500 animate-float">
                   {userProfile?.goals.fat}g
                 </p>
                 <p className="text-xs text-muted-foreground">daily</p>
-              </div>
+              </motion.div>
             </div>
           </CardContent>
         </Card>

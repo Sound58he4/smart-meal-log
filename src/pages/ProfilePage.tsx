@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useFitness } from "@/context/FitnessContext";
 import { useToast } from "@/components/ui/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
 
 export default function ProfilePage() {
   const { userProfile, setUserProfile } = useFitness();
@@ -31,8 +32,18 @@ export default function ProfilePage() {
   
   if (!userProfile) return null;
 
+  const fadeInUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
-    <div className="space-y-6">
+    <motion.div 
+      className="space-y-6"
+      initial="hidden"
+      animate="visible"
+      variants={fadeInUpVariants}
+    >
       <div>
         <h1 className="text-3xl font-bold">Your Profile</h1>
         <p className="text-muted-foreground">Manage your personal information and goals</p>
@@ -45,8 +56,8 @@ export default function ProfilePage() {
         </TabsList>
         
         <TabsContent value="personal">
-          <Card>
-            <CardHeader>
+          <Card className="card-hover">
+            <CardHeader className="bg-gradient-to-r from-fitness-primary/10 to-fitness-secondary/10 dark:from-fitness-primary/5 dark:to-fitness-secondary/5">
               <CardTitle>Personal Information</CardTitle>
             </CardHeader>
             <CardContent>
@@ -58,6 +69,7 @@ export default function ProfilePage() {
                       id="name" 
                       defaultValue={userProfile.name}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                   
@@ -70,6 +82,7 @@ export default function ProfilePage() {
                       min={13}
                       max={120}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                   
@@ -82,6 +95,7 @@ export default function ProfilePage() {
                       min={50}
                       max={300}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                   
@@ -95,6 +109,7 @@ export default function ProfilePage() {
                       max={500}
                       step={0.1}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                   
@@ -103,7 +118,7 @@ export default function ProfilePage() {
                     <select 
                       id="activityLevel" 
                       defaultValue={userProfile.activityLevel}
-                      className="w-full h-10 px-3 rounded-md border border-input bg-transparent"
+                      className="w-full h-10 px-3 rounded-md border border-input bg-transparent focus:border-fitness-primary focus:outline-none focus:ring-2 focus:ring-fitness-primary/20"
                       required
                     >
                       <option value="sedentary">Sedentary (little or no exercise)</option>
@@ -115,17 +130,19 @@ export default function ProfilePage() {
                   </div>
                 </div>
                 
-                <Button type="submit" className="bg-fitness-primary hover:bg-fitness-primary/90">
-                  Save Changes
-                </Button>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button type="submit" className="bg-fitness-primary hover:bg-fitness-primary/90">
+                    Save Changes
+                  </Button>
+                </motion.div>
               </form>
             </CardContent>
           </Card>
         </TabsContent>
         
         <TabsContent value="goals">
-          <Card>
-            <CardHeader>
+          <Card className="card-hover">
+            <CardHeader className="bg-gradient-to-r from-fitness-secondary/10 to-fitness-primary/10 dark:from-fitness-secondary/5 dark:to-fitness-primary/5">
               <CardTitle>Nutrition Goals</CardTitle>
             </CardHeader>
             <CardContent>
@@ -140,6 +157,7 @@ export default function ProfilePage() {
                       min={500}
                       max={10000}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                   
@@ -152,6 +170,7 @@ export default function ProfilePage() {
                       min={10}
                       max={500}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                   
@@ -164,6 +183,7 @@ export default function ProfilePage() {
                       min={10}
                       max={1000}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                   
@@ -176,27 +196,35 @@ export default function ProfilePage() {
                       min={10}
                       max={500}
                       required
+                      className="focus:border-fitness-primary"
                     />
                   </div>
                 </div>
                 
-                <div className="bg-muted/50 p-4 rounded-md">
+                <motion.div 
+                  className="bg-muted/50 p-4 rounded-md"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
                   <h3 className="font-medium mb-2">Recommended Macronutrient Splits</h3>
                   <div className="text-sm text-muted-foreground space-y-1">
                     <p>• Weight Loss: 30% protein, 35% carbs, 35% fat</p>
                     <p>• Balanced: 25% protein, 50% carbs, 25% fat</p>
                     <p>• Athletic: 30% protein, 55% carbs, 15% fat</p>
                   </div>
-                </div>
+                </motion.div>
                 
-                <Button type="submit" className="bg-fitness-primary hover:bg-fitness-primary/90">
-                  Update Goals
-                </Button>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button type="submit" className="bg-fitness-primary hover:bg-fitness-primary/90">
+                    Update Goals
+                  </Button>
+                </motion.div>
               </form>
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
+    </motion.div>
   );
 }
