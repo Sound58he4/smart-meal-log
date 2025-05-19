@@ -11,13 +11,16 @@ import Dashboard from "./pages/Dashboard";
 import MealsPage from "./pages/MealsPage";
 import ProgressPage from "./pages/ProgressPage";
 import ProfilePage from "./pages/ProfilePage";
+import WorkoutsPage from "./pages/WorkoutsPage";
+import GoalsPage from "./pages/GoalsPage";
+import LogPage from "./pages/LogPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+  <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <QueryClientProvider client={queryClient}>
       <FitnessProvider>
         <TooltipProvider>
           <Toaster />
@@ -29,14 +32,17 @@ const App = () => (
                 <Route path="meals" element={<MealsPage />} />
                 <Route path="progress" element={<ProgressPage />} />
                 <Route path="profile" element={<ProfilePage />} />
+                <Route path="workouts" element={<WorkoutsPage />} />
+                <Route path="goals" element={<GoalsPage />} />
+                <Route path="log" element={<LogPage />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
       </FitnessProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+    </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;

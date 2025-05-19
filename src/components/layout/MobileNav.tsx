@@ -1,7 +1,7 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Home, Activity, Calendar, User, Plus } from "lucide-react";
+import { Home, Activity, Calendar, User, Plus, Target, BookOpen, Dumbbell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -68,7 +68,7 @@ export function MobileNav() {
             </Button>
           </motion.div>
         </SheetTrigger>
-        <SheetContent side="bottom" className="h-[40vh]">
+        <SheetContent side="bottom" className="h-[50vh]">
           <div className="space-y-4 pt-4">
             <h2 className="text-xl font-bold">Quick Add</h2>
             <p className="text-muted-foreground">Choose what you want to log:</p>
@@ -80,13 +80,18 @@ export function MobileNav() {
               </Button>
               
               <Button onClick={handleQuickAdd} variant="outline" className="justify-start">
-                <Activity size={18} className="mr-2" />
+                <Dumbbell size={18} className="mr-2" />
                 Log Workout
               </Button>
               
               <Button onClick={handleQuickAdd} variant="outline" className="justify-start">
-                <User size={18} className="mr-2" />
-                Update Metrics
+                <BookOpen size={18} className="mr-2" />
+                Daily Log
+              </Button>
+              
+              <Button onClick={handleQuickAdd} variant="outline" className="justify-start">
+                <Target size={18} className="mr-2" />
+                Set Goal
               </Button>
             </div>
           </div>
@@ -94,7 +99,7 @@ export function MobileNav() {
       </Sheet>
 
       <NavLink
-        to="/progress"
+        to="/workouts"
         className={({ isActive }) =>
           cn(
             "flex flex-col items-center justify-center",
@@ -102,8 +107,8 @@ export function MobileNav() {
           )
         }
       >
-        <Activity size={20} />
-        <span className="text-xs mt-1">Progress</span>
+        <Dumbbell size={20} />
+        <span className="text-xs mt-1">Workouts</span>
       </NavLink>
 
       <NavLink

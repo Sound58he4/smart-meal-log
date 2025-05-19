@@ -1,7 +1,7 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Home, Activity, Calendar, Settings, User, Plus, BadgeCheck, Dumbbell } from "lucide-react";
+import { Home, Activity, Calendar, Settings, User, Plus, BadgeCheck, Dumbbell, BookOpen, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -11,9 +11,10 @@ import { useToast } from "@/components/ui/use-toast";
 const navItems = [
   { path: "/", label: "Dashboard", icon: Home },
   { path: "/meals", label: "Nutrition", icon: Calendar },
-  { path: "/progress", label: "Progress", icon: Activity },
   { path: "/workouts", label: "Workouts", icon: Dumbbell },
-  { path: "/achievements", label: "Goals", icon: BadgeCheck },
+  { path: "/progress", label: "Progress", icon: Activity },
+  { path: "/goals", label: "Goals", icon: Target },
+  { path: "/log", label: "Daily Log", icon: BookOpen },
   { path: "/profile", label: "Profile", icon: User },
 ];
 
@@ -119,10 +120,18 @@ export function Sidebar() {
               </Button>
               
               <Button onClick={handleQuickAdd} variant="outline" className="justify-start h-12 text-left">
-                <Activity size={18} className="mr-2" />
+                <BookOpen size={18} className="mr-2" />
                 <div>
-                  <div className="font-medium">Log Metrics</div>
-                  <div className="text-xs text-muted-foreground">Weight, measurements, etc.</div>
+                  <div className="font-medium">Daily Log</div>
+                  <div className="text-xs text-muted-foreground">Track metrics & notes</div>
+                </div>
+              </Button>
+              
+              <Button onClick={handleQuickAdd} variant="outline" className="justify-start h-12 text-left">
+                <Target size={18} className="mr-2" />
+                <div>
+                  <div className="font-medium">Set Goal</div>
+                  <div className="text-xs text-muted-foreground">Create new fitness goal</div>
                 </div>
               </Button>
             </div>
