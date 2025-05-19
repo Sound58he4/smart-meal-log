@@ -39,8 +39,10 @@ export function NutritionSummary() {
               {protein.toFixed(1)} / {goals.protein} g
             </span>
           </div>
-          <Progress value={formatPercentage(progress.proteinPercentage)} className="h-2 bg-muted" 
-            indicatorClassName="bg-blue-500" />
+          <Progress 
+            value={formatPercentage(progress.proteinPercentage)} 
+            className="h-2 [&>div]:bg-blue-500" 
+          />
         </div>
 
         <div>
@@ -50,8 +52,10 @@ export function NutritionSummary() {
               {carbs.toFixed(1)} / {goals.carbs} g
             </span>
           </div>
-          <Progress value={formatPercentage(progress.carbsPercentage)} className="h-2 bg-muted" 
-            indicatorClassName="bg-amber-500" />
+          <Progress 
+            value={formatPercentage(progress.carbsPercentage)} 
+            className="h-2 [&>div]:bg-amber-500" 
+          />
         </div>
 
         <div>
@@ -61,8 +65,10 @@ export function NutritionSummary() {
               {fat.toFixed(1)} / {goals.fat} g
             </span>
           </div>
-          <Progress value={formatPercentage(progress.fatPercentage)} className="h-2 bg-muted" 
-            indicatorClassName="bg-red-500" />
+          <Progress 
+            value={formatPercentage(progress.fatPercentage)} 
+            className="h-2 [&>div]:bg-red-500" 
+          />
         </div>
       </CardContent>
     </Card>
