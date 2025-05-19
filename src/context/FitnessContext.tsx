@@ -78,7 +78,7 @@ const defaultUserProfile: UserProfile = {
 
 const FitnessContext = createContext<FitnessContextType | undefined>(undefined);
 
-export const FitnessProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const FitnessProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [userProfile, setUserProfile] = useState<UserProfile | null>(defaultUserProfile);
   const [dailyLog, setDailyLog] = useState<DailyLog | null>(null);
