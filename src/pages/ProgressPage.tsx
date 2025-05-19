@@ -1,8 +1,7 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useFitness } from "@/context/FitnessContext";
-import { BarChart, AreaChart } from "@/components/ui/chart";
+import { BarChart, AreaChart } from "@/components/ui/charts";
 import { format, subDays } from "date-fns";
 
 export default function ProgressPage() {
