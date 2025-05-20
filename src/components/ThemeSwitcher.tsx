@@ -25,7 +25,7 @@ export function ThemeSwitcher() {
           <motion.div
             animate={{ 
               rotate: theme === 'dark' ? 180 : 0,
-              scale: theme === 'dark' ? [1, 1.2, 1] : [1, 1.2, 1]
+              scale: [1, 1.2, 1]
             }}
             transition={{ duration: 0.5 }}
           >
