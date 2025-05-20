@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { format, subDays } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,7 +15,7 @@ import {
   Heart, 
   Scale, 
   Smile, 
-  Water, 
+  Droplets, 
   Moon, 
   Plus, 
   Search,
@@ -147,7 +146,7 @@ export default function LogPage() {
                         <div className="space-y-2">
                           <Label htmlFor="water">Water Intake (ml)</Label>
                           <div className="relative">
-                            <Water className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                            <Droplets className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                             <Input 
                               id="water" 
                               type="number" 
@@ -288,7 +287,7 @@ export default function LogPage() {
                         </div>
                         
                         <div className="flex items-center gap-2">
-                          <Water className="h-4 w-4 text-muted-foreground" />
+                          <Droplets className="h-4 w-4 text-muted-foreground" />
                           <span>{log.water} ml</span>
                         </div>
                         

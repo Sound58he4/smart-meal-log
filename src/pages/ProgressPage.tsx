@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -16,7 +15,7 @@ import {
   Scale, 
   Share2, 
   Target, 
-  Tape, 
+  MeasuringTape, 
   TrendingDown,
   TrendingUp,
   Dumbbell,
@@ -254,7 +253,7 @@ export default function ProgressPage() {
                       </div>
                     </div>
                     <div className="h-12 w-12 rounded-full bg-blue-500/10 flex items-center justify-center">
-                      <Tape className="h-6 w-6 text-blue-500" />
+                      <MeasuringTape className="h-6 w-6 text-blue-500" />
                     </div>
                   </div>
                 </CardContent>

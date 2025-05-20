@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Plus, Apple, Dumbbell, BarChart3, Water, Clock } from "lucide-react";
+import { Plus, Apple, Dumbbell, BarChart3, Droplets, Clock } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 export const QuickActions = () => {
@@ -18,7 +18,7 @@ export const QuickActions = () => {
   const actions = [
     { icon: Apple, label: "Log Food", color: "bg-green-500/10 text-green-500" },
     { icon: Dumbbell, label: "Log Workout", color: "bg-blue-500/10 text-blue-500" },
-    { icon: Water, label: "Log Water", color: "bg-cyan-500/10 text-cyan-500" },
+    { icon: Droplets, label: "Log Water", color: "bg-cyan-500/10 text-cyan-500" },
     { icon: BarChart3, label: "View Reports", color: "bg-purple-500/10 text-purple-500" },
     { icon: Clock, label: "Set Reminder", color: "bg-amber-500/10 text-amber-500" },
   ];
